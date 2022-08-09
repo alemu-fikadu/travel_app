@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/widget/app_large_text.dart';
 import 'package:travel_app/widget/app_text.dart';
+import 'package:travel_app/widget/button.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -12,7 +13,11 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  List images = ["welcome-one.jpg", "welcome-two.jpg", "welcome_tree.jpg"];
+  List<String> images = [
+    "welcome-one.jpg",
+    "welcome-two.jpg",
+    "welcome_tree.jpg"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +38,7 @@ class _WelcomePageState extends State<WelcomePage> {
               child: Container(
                 margin: const EdgeInsets.only(top: 150, right: 20, left: 20),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,8 +60,28 @@ class _WelcomePageState extends State<WelcomePage> {
                                 "Mountain hikes gives you an incredible sense of freedom along with edurnce test",
                             size: 16,
                           ),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        ResponsiveButton(
+                          width: 120,
                         )
                       ],
+                    ),
+                    Column(
+                      children: List.generate(3, (indexDots) {
+                        return Container(
+                          margin: EdgeInsets.only(bottom: 2),
+                          width: 8,
+                          height: index == indexDots ? 25 : 8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color:
+                                index == indexDots ? Colors.blue : Colors.white,
+                          ),
+                        );
+                      }),
                     )
                   ],
                 ),
